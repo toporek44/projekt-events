@@ -2,19 +2,35 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import EventList from '../components/EventList';
 import { Event } from '../types';
 import { fetchEventsWithFilters } from '../api/requests';
+import classNames from 'classnames';
 
 const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [search, setSearch] = useState('');
+  const [isBlock, setIsBlock] = useState(false);
   const [city, setCity] = useState('');
 
   const handleFetchEvents = () => {
     fetchEventsWithFilters({ name: search, city })
-      .then((events) => setEvents(events._embedded.events))
+      .then((events) => setEvents(events._embedded.events || []))
       .catch(console.error);
   };
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);
-  const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value);
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setIsBlock(true);
+    } else {
+      setIsBlock(false);
+    }
+    setSearch(e.target.value);
+  };
+  const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setIsBlock(true);
+    } else {
+      setIsBlock(false);
+    }
+    setCity(e.target.value);
+  };
 
   useEffect(() => {
     if (events.length) return;
@@ -52,8 +68,14 @@ const Events = () => {
           />
         </div>
         <button
+          disabled={isBlock}
           onClick={handleFetchEvents}
-          className="w-full h-[38px] self-end bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline"
+          className={classNames(
+            'w-full h-[38px] self-end bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline',
+            {
+              'bg-slate-400 hover:bg-slate-400': isBlock,
+            },
+          )}
         >
           Apply Filters
         </button>

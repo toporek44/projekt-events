@@ -39,7 +39,7 @@ export const fetchEventDetails = async (eventId: string) => {
   }
 };
 
-export const fetchEventsWithFilters = async ({ name = '', city = '', date = '' }) => {
+export const fetchEventsWithFilters = async ({ name = '', city = '' }) => {
   const url = `${BASE_URL}/events?apikey=${API_KEY}&keyword=${encodeURIComponent(name)}&city=${encodeURIComponent(city)}`;
 
   try {
