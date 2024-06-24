@@ -23,7 +23,7 @@ const Events = () => {
 
   return (
     <div className="p-4 space-y-4">
-      <h2 className="text-xl font-semibold text-white">Filter Events</h2>
+      <h1 className="text-3xl font-semibold text-white text-center mb-4">Filter Events</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label htmlFor="eventName" className="block text-sm font-medium text-white">
@@ -51,13 +51,13 @@ const Events = () => {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
+        <button
+          onClick={handleFetchEvents}
+          className="w-full h-[38px] self-end bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline"
+        >
+          Apply Filters
+        </button>
       </div>
-      <button
-        onClick={handleFetchEvents}
-        className="w-full md:w-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline"
-      >
-        Apply Filters
-      </button>
       <EventList events={events} />
     </div>
   );

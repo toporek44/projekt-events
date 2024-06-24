@@ -29,9 +29,9 @@ const HomePage = () => {
   }, [favorites]);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-2 text-[#fff]">Events overview</h2>
-      <p className="mb-4 text-[#fff]">Below you can find last added events</p>
+    <div className="p-4 flex flex-col items-center">
+      <h1 className="text-3xl font-semibold mb-2 text-[#fff]">Events overview</h1>
+      <p className="mb-8 text-[#fff] text-lg">Below you can find last added events</p>
       <EventList events={events} />
     </div>
   );

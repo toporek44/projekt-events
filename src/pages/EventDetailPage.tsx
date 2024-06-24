@@ -22,19 +22,20 @@ const EventDetailPage = () => {
   }
 
   return (
-    <div className="relative flex flex-col  event-detail-page text-white  shadow-md rounded px-8 pt-6 pb-8 mb-4 min-h-[100%]">
-      <h2 className="text-xl font-bold mb-4">{event.name}</h2>
+    <div
+      className="relative flex flex-col event-detail-page text-white shadow-md rounded px-8 pt-6 pb-8 mb-4 min-h-[100%]">
+      <h1 className="text-3xl font-bold mb-4 text-center">{event.name}</h1>
       <img src={event.images[0].url} alt={event.name} className="max-w-[800px] mx-auto mb-4 w-full rounded" />
-      <p className="text-sm mt-2">
+      <p className="text-xl mt-2">
         <strong>Start Time: </strong> {new Date(event.dates.start.dateTime).toLocaleString()}
       </p>
-      <p className="text-sm">
+      <p className="text-xl mt-2">
         <strong>Timezone:</strong> {event.dates.timezone}
       </p>
       {event.info && <p className="mt-2">{event.info}</p>}
       {event.pleaseNote && <p className="mt-2 text-red-600">{event.pleaseNote}</p>}
       {event.priceRanges && (
-        <p className="mt-2">
+        <p className="mt-2 text-xl">
           <strong>Price Range:</strong> {event.priceRanges[0].min} - {event.priceRanges[0].max}{' '}
           {event.priceRanges[0].currency}
         </p>

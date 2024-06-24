@@ -6,7 +6,7 @@ const FavoritesEvents = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4 text-white">Favorite Events</h2>
+      <h1 className="text-3xl font-semibold mb-4 text-white text-center">Favorite Events</h1>
       <EventList events={favorites} />
     </div>
   );
